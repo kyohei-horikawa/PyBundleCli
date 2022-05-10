@@ -2,7 +2,7 @@ import os
 import json
 from os.path import expanduser
 import fire
-from . import get_config, make_readme, make_pypirc, make_license, make_setup, make_gitignore, make_init, make_project
+from . import get_config, make_readme, make_license, make_setup, make_gitignore, make_init, make_project
 
 
 class Cli(object):
@@ -11,11 +11,7 @@ class Cli(object):
         home = expanduser("~")
         template = """
 {
-  "git_account": "",
-  "pypi_account": "",
-  "pypi_password": "",
-  "test_pypi_account": "",
-  "test_pypi_password": ""
+  "git_account": ""
 }
         """
         if os.path.isdir(f'{home}/.pybundle'):
@@ -49,11 +45,10 @@ class Cli(object):
                     print(f"{key[0]} isn't in config")
 
     def new(self, project):
-        author, email, git_account, pypi_account, pypi_password, test_pypi_account, test_pypi_password = get_config.get_config()
+        author, email, git_account = get_config.get_config()
         os.mkdir(project)
         os.chdir(project)
         make_setup.make_setup(project, author, email, git_account)
-        make_pypirc.make_pypirc(pypi_account, pypi_password, test_pypi_account, test_pypi_password)
         make_gitignore.make_gitignore()
         make_license.make_license(git_account)
         make_readme.make_readme(project)
@@ -65,7 +60,3 @@ class Cli(object):
 
 def main():
     fire.Fire(Cli)
-
-
-# if __name__ == '__main__':
-#     fire.Fire(Cli)
