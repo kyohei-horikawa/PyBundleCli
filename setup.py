@@ -24,6 +24,7 @@ setup(
         ]
     },
     long_description=readme,
+    long_description_content_type='text/markdown',
     author='Kyohei Horikawa',
     author_email='kyohei3430@gmail.com',
     url='https://github.com/kyohei-horikawa/PyBundleCli',

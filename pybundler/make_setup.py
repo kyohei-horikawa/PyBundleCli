@@ -23,6 +23,7 @@ setup(
         ]
     }},
     long_description=readme,
+    long_description_content_type='text/markdown',
     author='{author}',
     author_email='{email}',
     url='https://github.com/{git_account}/{project}',
