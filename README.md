@@ -1,5 +1,7 @@
 # PyBundleCli
 
+[![Downloads](https://static.pepy.tech/personalized-badge/pybundlecli?period=month&units=international_system&left_color=black&right_color=orange&left_text=Downloads)](https://pepy.tech/project/pybundlecli)
+
 This application was developed for command line interface tools written by Python.
 
 # Usage

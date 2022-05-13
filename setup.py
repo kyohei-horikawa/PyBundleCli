@@ -3,16 +3,15 @@
 from setuptools import setup, find_packages
 from pybundler import __VERSION__
 
-
-def _requires_from_file(filename):
-    return open(filename).read().splitlines()
-
-
 with open('README.md') as f:
     readme = f.read()
 
 with open('LICENSE') as f:
     license_txt = f.read()
+
+INSTALL_REQUIRES = [
+    'fire>=0.4.0'
+]
 
 setup(
     name='PyBundleCli',
@@ -30,5 +29,5 @@ setup(
     url='https://github.com/kyohei-horikawa/PyBundleCli',
     license=license_txt,
     packages=find_packages(exclude=('sample',)),
-    install_requires=_requires_from_file('requirements.txt'),
+    install_requires=INSTALL_REQUIRES
 )

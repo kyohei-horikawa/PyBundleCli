@@ -4,9 +4,6 @@ def make_setup(project, author, email, git_account):
 from setuptools import setup, find_packages
 from {project} import __VERSION__
 
-def _requires_from_file(filename):
-    return open(filename).read().splitlines()
-
 with open('README.md') as f:
     readme = f.read()
 
@@ -29,7 +26,6 @@ setup(
     url='https://github.com/{git_account}/{project}',
     license=license_txt,
     packages=find_packages(exclude=('sample',)),
-    install_requires=_requires_from_file('requirements.txt')
 )"""
     with open('setup.py', 'w') as f:
         f.write(template)
