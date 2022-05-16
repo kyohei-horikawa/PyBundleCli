@@ -2,7 +2,8 @@ import os
 import json
 from os.path import expanduser
 import fire
-from . import get_config, make_readme, make_license, make_setup, make_gitignore, make_init, make_project
+import subprocess
+from . import get_config, make_readme, make_license, make_setup, make_gitignore, make_init, make_project, get_new_path
 
 
 class Cli(object):
@@ -56,6 +57,14 @@ class Cli(object):
         os.chdir(project)
         make_init.make_init()
         make_project.make_project(project)
+
+    def local(self):
+        subprocess.call(['python3', 'setup.py', 'sdist'])
+        subprocess.call(['pip3', 'install', get_new_path.get_new_path()])
+
+    def upload(self, to):
+        subprocess.call(['python3', 'setup.py', 'sdist', 'bdist_wheel'])
+        subprocess.call(['python3', '-m', 'twine', 'upload', '-r', to, get_new_path.get_new_path(), '--verbose'])
 
 
 def main():
